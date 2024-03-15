@@ -1,0 +1,7 @@
+name: easy-k8s
+runtime: nodejs
+description: Spinning the infra for K8S in Digital Ocean
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript

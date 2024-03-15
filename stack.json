@@ -1,0 +1,208 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2024-03-12T19:19:21.09697+01:00",
+            "magic": "6d317326f270887410dafd14e4aa020a3db27ce5465c9669e88be55f203b3ac3",
+            "version": "v3.109.0"
+        },
+        "secrets_providers": {
+            "type": "service",
+            "state": {
+                "url": "https://api.pulumi.com",
+                "owner": "StuxxNet",
+                "project": "easy-k8s",
+                "stack": "dev"
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:dev::easy-k8s::pulumi:pulumi:Stack::easy-k8s-dev",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2024-03-12T18:02:34.442565Z",
+                "modified": "2024-03-12T18:02:34.442565Z",
+                "sourcePosition": "project:///node_modules/@pulumi/runtime/stack.ts#36,23"
+            },
+            {
+                "urn": "urn:pulumi:dev::easy-k8s::easy-k8s:network::easy-k8s-dev-component-resource-vpc",
+                "custom": false,
+                "type": "easy-k8s:network",
+                "parent": "urn:pulumi:dev::easy-k8s::pulumi:pulumi:Stack::easy-k8s-dev",
+                "created": "2024-03-12T18:02:35.447298Z",
+                "modified": "2024-03-12T18:02:35.447298Z",
+                "sourcePosition": "project:///index.ts#9,13"
+            },
+            {
+                "urn": "urn:pulumi:dev::easy-k8s::easy-k8s:controlplane::easy-k8s-dev-component-resource-controlplane",
+                "custom": false,
+                "type": "easy-k8s:controlplane",
+                "parent": "urn:pulumi:dev::easy-k8s::pulumi:pulumi:Stack::easy-k8s-dev",
+                "created": "2024-03-12T18:02:35.200454Z",
+                "modified": "2024-03-12T18:02:35.200454Z",
+                "sourcePosition": "project:///index.ts#10,1"
+            },
+            {
+                "urn": "urn:pulumi:dev::easy-k8s::pulumi:providers:digitalocean::default_4_25_2",
+                "custom": true,
+                "id": "b3617091-2d75-4cb3-adb1-7fd1dff3bad8",
+                "type": "pulumi:providers:digitalocean",
+                "inputs": {
+                    "version": "4.25.2"
+                },
+                "outputs": {
+                    "version": "4.25.2"
+                },
+                "created": "2024-03-12T18:02:37.173655Z",
+                "modified": "2024-03-12T18:02:37.173655Z"
+            },
+            {
+                "urn": "urn:pulumi:dev::easy-k8s::easy-k8s:network$digitalocean:index/vpc:Vpc::easy-k8s-dev-resource-vpc",
+                "custom": true,
+                "id": "65a20505-c169-4a70-ab95-5ab3b4811655",
+                "type": "digitalocean:index/vpc:Vpc",
+                "inputs": {
+                    "__defaults": [],
+                    "ipRange": "10.0.0.0/16",
+                    "name": "easy-k8s-dev-resource-vpc",
+                    "region": "fra1"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"delete\":120000000000}}",
+                    "createdAt": "2024-03-12 18:02:39 +0000 UTC",
+                    "default": false,
+                    "description": "",
+                    "id": "65a20505-c169-4a70-ab95-5ab3b4811655",
+                    "ipRange": "10.0.0.0/16",
+                    "name": "easy-k8s-dev-resource-vpc",
+                    "region": "fra1",
+                    "vpcUrn": "do:vpc:65a20505-c169-4a70-ab95-5ab3b4811655"
+                },
+                "parent": "urn:pulumi:dev::easy-k8s::easy-k8s:network::easy-k8s-dev-component-resource-vpc",
+                "provider": "urn:pulumi:dev::easy-k8s::pulumi:providers:digitalocean::default_4_25_2::b3617091-2d75-4cb3-adb1-7fd1dff3bad8",
+                "propertyDependencies": {
+                    "ipRange": null,
+                    "name": null,
+                    "region": null
+                },
+                "created": "2024-03-12T18:02:39.425157Z",
+                "modified": "2024-03-12T18:02:39.425157Z",
+                "sourcePosition": "project:///src/vpc.ts#18,16"
+            },
+            {
+                "urn": "urn:pulumi:dev::easy-k8s::easy-k8s:controlplane$digitalocean:index/kubernetesCluster:KubernetesCluster::easy-k8s-dev-kubernetes-controlplane",
+                "custom": true,
+                "id": "7b222eea-8ecf-47ae-a6be-a1d5500dcfc8",
+                "type": "digitalocean:index/kubernetesCluster:KubernetesCluster",
+                "inputs": {
+                    "__defaults": [
+                        "destroyAllAssociatedResources",
+                        "ha",
+                        "registryIntegration",
+                        "surgeUpgrade"
+                    ],
+                    "destroyAllAssociatedResources": false,
+                    "ha": false,
+                    "name": "easy-k8s-dev-kubernetes-controlplane",
+                    "nodePool": {
+                        "__defaults": [
+                            "autoScale"
+                        ],
+                        "autoScale": false,
+                        "name": "ingress-nodepool",
+                        "nodeCount": 3,
+                        "size": "s-2vcpu-2gb"
+                    },
+                    "region": "fra1",
+                    "registryIntegration": false,
+                    "surgeUpgrade": true,
+                    "version": "1.29"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1800000000000},\"schema_version\":\"3\"}",
+                    "autoUpgrade": false,
+                    "clusterSubnet": "10.244.0.0/16",
+                    "clusterUrn": "do:kubernetes:7b222eea-8ecf-47ae-a6be-a1d5500dcfc8",
+                    "createdAt": "2024-03-12 18:14:47 +0000 UTC",
+                    "destroyAllAssociatedResources": false,
+                    "endpoint": "https://7b222eea-8ecf-47ae-a6be-a1d5500dcfc8.k8s.ondigitalocean.com",
+                    "ha": false,
+                    "id": "7b222eea-8ecf-47ae-a6be-a1d5500dcfc8",
+                    "ipv4Address": "",
+                    "kubeConfigs": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "AAABAAeejyCYie/junL4nHB6VYAcKhYirNWKGh8ua122jiNERx7BlrcH4nuPxyU2VIP+0EsedTnKF4bKpQAyAu2h05zSEgDacVzZpVE3UFdMLjqr74IhmPXa9TMC5LIXwCtWSmfoaOGUGRynnrIEN/cHhUd2p0cTb4NXwtliR5JehLGmpMgG4ny5hb1rS8GzxPWS+FXOXcr8YMcGV9QySsMjFCFrIYeutqbb37sj44N2993X6BwO47fHSoFN42mZ1IVQCOnMAYRNo3mFIOBzPCyDwb9HBaEUwB1yMpn2BNQ10k8xJjjEJZanPpGheTrJR93WQDtpFq4xrN5a8H4SnSuKvRuECv1ksrg/5cFabqeulGr5NIGJbhAZmVH/SGb3IK23fWHSpEKJ7geRBsCSgdMTcdFPf7lXIGEa2JxhvVptDt22V8vqMJnNoNvoWT2gVpzzphBqPNNUej0oPdahrLy6MVcKaI1z5UfCeXYex4NFpINDEKYwS2mwLR0Tnnw4NeMLQUKbeQ4QaAsa2LfOXArkMhDO9jUWEaALkcADzSOECMn3GMbC3k2ndEy7PPaJuQHIy5TYLZe3tXMqoGELQthMjkYvcZ3TalvSJ8oNvA1Khe5eAcyBf0wokD2a6t/vNRwHI+CVKgU4jmmr8P9PwwN1Y1jKRMCiONObEdjUjC5o5O4ezRbwIVhbcD3efDBpEHXGSL/vcnNiu1Ss3otDKXGEim6XujUx6TlSqfUOK3XE53KtwPtkiJVZyfILBCzWCWsh1VWhYlQL8O5cxKkMsJMlyWRfCd2m/BEpDy9zztVY06SOyz9oc34nSA7lLmNNw72XxoG2gsjtCGzd0iFocUd3+g7N5+eZCttqPz14oULVWfWd9BohQnz1eQ4jMXlbRA65Q1nk5Gikfyb9UrMI8KkH6ufCyABpjslgjMQhiOrmAUP7pHWUnbTToTlv/PRFrJvT8zr1UM88ZqAISuxgAk4YVBoKX53P7jUOBQ58TYKzKeXpLyubJ062cPW6FCp5kHP91zdSM+3k302Mgp3eHXGqdBUXe7GwWAW+X8rxZPlJSFdqn84Ckvkazc+ZLofSFaTMptuuFQnRzY+9NNOt1tL8cLQf634CGR4SBRrtfIAY1msgnkofFwVIm+O9GxpcXfNFB58FOtL3myWQUAeBUuwXU/vu4dFpMAUiiK6q6Q8RqHX3pODliY+6yHdRnTHGgdAbqqA9u/oA2j8fzpmOyCvo9o1yLcWT7aC1UIS95GkF0HUmNA0lvnwU/Hr1re3S1DFvvQRCBukjPSZmud8OatwNIZZWQLKtVXulRohRXInYAaeEZNjxTf/WEaLynisC9M9XbVRQBOJiyCIBow7gnE9sP8Ib2qTD6og/Av2fobCVeDwQePqoNGyR1bN0ZcevLXKRjcmXFiX/2gETw85kwcwHH9ymiGh6WwBhTQ8J0z4EMqqP0np7hhFKjpjU8brYt9Ij41JU8jlXQCHj7tsZt7jDCwZFakLLKjw2d10dGjm1bo1bIs1Y7G8jdc3vGRLw+zAnyFRjlNeftI6wzblu8M8DemP//ltDmMF5kALzSgI5ZOM8PGaBIDvur78VrbfqQ6X3NbnrgXH1oM4YNTfUA0OIfxu7CZvIa6wR0HAmzpUqbOYbOddCHqj3cfgc6FbdtOXbqfmUVI6gdsTK2tTSPjOfyEDmAendKuV/6f1oFFA/x0QAQDsxZWN9/YTgWVU1pLYAsFAygWXBcIhZ8tjfdnyGaDGfhhQsx1MTDBgt47ZS0Kd/LVHpC1Qr6Leds78LIa27uebOaMR9c272wOs1xWgHpRnjh8DZ1wJyhhMfvlkGxfCtJpANxuipNgKxsQx95zDZDA7R04bJxb4qPsB6xMPhwmtuGcpArbPLFiOoGozXu9WTsUbF5ah4D0zkIy/+w8FhYt1s2k813JpjJnM9Nv7WFCQkA0gYJMEJP7Je4dstL0OY+tpu/6KFgICyLagC2nDA9IBeS1+Rtct+1aHZ/uFnm1i/6fpf3gMPCrimMDTn6QFP2tzHPVs1YT4RiZ4W3yMGlM4fzLYp/9DrOPUN8WCKJGakWA1CxkiY6WtdPdv3Nh55Gta2yxh367D2Vdx+hZ5hesO08QBcYOXjLpwJj5U5eLQacT3HNN2BmiNAqhw92OOJAp6tmo/Ud04SuKpmU7iRbsWC1PZg5pbyB14x1wRcmYGS7D0sV1GivZYy3BhiQB76lGf09SyMoIa2XSVjOhqRpP26mVSkNbcg6LObg9blt1v6bSQWOamaJsJc/R5zxisfXmlbUqTRP6AX2dJQhDJL9q905tm8qnhf3RdgZdSR2DayLZxzWLpDgg6YrOLbXKT73XDbNNsKR4Ty9cXqBUSjXvZzIX2y8alofDqB6FFfLQD4sHobZVMdeaKVeB7CFyveqwzBuubxU5pZEqrKC5jK60IiQWxQdxplDWZcV1f2EBmIIBJ5hyF0OGVd/94HE+3kHZpuVSW9iYA7SR3hvzy5CmuX0/6TNV+XX3Tu5i5kmE0pHF3Om7fkXhoQYuzvbZMu4w5UoPOIOYocv61afwk4qPkuW0PrDaIwYkL3kJqkbPvAjf0wgczG6vRrATMaz+I8L6U3uIrSAaQI9O34o3UT7pdp/qThLpgcCgvqWgRpVpxpVzs4r+e+AgVmXd55YJvO8mDUWWKUe+p6Ey61PJdIn3HDJAv9eYERunUDUDU+LsdJGuX8pziey+vrxfmG7wfQV3PZhP4jyBlYI0+8PKCTzqpKMcXpo80D8Nu3N2MldNHAMUe9/ux1gAfOPBlLeWjIEMOYsjnlxGmeC7qN+DtL3ZrJ5SYl0+BdoTQU9kjMv7FDqCG/wg8R5knGmOrfvWkGPpAgT5XG62QKzKKajLNO6oVkkl6r096FMgv22/KDjfbFpJw2AVFmVKrVNIFqbFDdRNuxoPwDGrqNS0GqVkGidBE/qdR9pPE72aNur06BE6MN/S7KmzSAaU35UGHlvpvhWcXT/MvluKdn9VrEWE7bwNufxMAyjdxQQAE8b1dvZuvIRA/OX7qieto908mGJFCFamhlrAYHcQHXmMEpM9xCTSipAaye1sa/pnRluo4UF3uBTrgwN03SevpFUruCdRj8G95SkppU/EKNgZ8HndZsVY6N0GKfoSlCkGS8tgSJD8Y77y7NrNjofowxRGGNcdX3yTTCX6Rd2cQAAP0A2Pb/Vr3AQDsUvXBadxTpzwZUoHqH2tB7n2+mEhGOCVKFdc3/Bw6GvtXA2Djp/RGakJih/7OwE03nSxHO4Lx5xGBTb1D+uS8CZle9NQTTrfiTsisWQZnPNVuvR/n8p0z2xTCiqTTQKYmQy8kP0OwFYsPmTKi4qdR4rTDQ/fVt4/dSGSodE8v/zSVZMUZD4szRpn9IT8ZYkkDmsXn587BFGP5g1SDtpSaBukNFCkiZhE9DjBzXy2kOJdY7/cZvrffSHsS3YEJ6ytKoqAFwa7DE9HHP3acZe0L7FxOzH+pINyFVDLfJ8tcZK1s8Z7dYNAu8GdxjGILp4TirXLwho7q8Wmfz55MhacscnRVt+673ZMgG8NnKtNnIblGsznvhjAjmcZmq591b9lwvDosnoe7ef25q5bG6wBPEjFnSuZcw6Gy4G8Xvs5daJmdo1/EqVWCqzx/d6C6XvSAMZ3i91pkyLkr2CkzAUy32hf3HLB/kngwLp4lV/65DsKLfgJWRjCHHN1mgzfsyWESvm4VFMzZ0OpcQrjgXHGh5+u4/oAPW9ZDMpDSm250tNiFhH/Cu4Bw1GzlL8vnvK4mPFdplaDhaV/xmZowo8SrS+JA/EE2OVWB+LZ0WZayCkxVCBdgEUZVr2dvhs+hPbUZ5cEGmBrpsJSqeF6JAN+nSx4SumlPcHu9kttHJssVbt3/8tha/QUnAfuPcxuhV7sMHhVIeCuj3kh+XvY/Ira7y/l+ym0oeuZHTizO4O0ty2YQY6v3U/vTvGwOpTDxFp7DpRUfsI64Gqp8ZwYr1lHERTX8bYq61mCOxwQh8FW41UbRsPC0bEYUg61GrHzJYjRuFDvzG55tWRa1DAA/zFG1JE9VK3fyWE4y1CQ28FyqGkG/9Y8iiZE6JJbtQRFlvTwcq/tQjOOBP0xYe6Cp50H3CGutyKMkU6vAG3WTeXgYSwgCGmdmAiiJ5Ah1uC+QC+1TYLo4fEvfADIjZRWI5d3FIPUmxhi5Z+ShY5fLZqv3GWaPBC4f5kFC9PUbuv+wqgsjydOdzfU3QB2ZqnaZ5rPR1xnd3r6VuUeUo7UCiEVXUe7slU7fQk6YFPDtmh+vZEigcdoxXs0WkoLmEk6v0DMdsGO40l2Vb/CznaSJElDARdUkWxzCZ1k7iiRFXqhqunFVQpBK4xwFUNGsvVynxceLmgtL5lztfbvnLLFDo+IQkxte2PDyTzEg8awUI/O6N4tmlUeEi+Uh4lnHWI6VV0/Y8UtO7CZq1DnMaXVf0mZZTDaonj5FkNzXsklAOjF17ZzHk6hdCisovSVYXIvAcTRY+tT5WwxRGHrzYG61PirsNHPG9UzdGzZpPSB4RAXo1wRnLies00Hjh2Dbdwq5AxP1v4Uofhr+BhNXUW28adeUaBepozAgdF4t6zzFAIpTj1YtksFauSlu+zgxWGtqMkHP4qCPrReVrjJHd5ijqbFPed8PWeXSHamcPMa2F5sVpEnQCkNyAJBsoTyryfyrDLIgb3SbBbVS+jB+LG4FbaQ6bgkkPL4D6Xj8r+b4hWwNIW93aug/5auMiSIwZhkppcGuzIDWNVl/tXECpPkoh7g873treX+nS8v36cbKDeSJYAK+QFRlLJq1C8k+VJkQ9BeXckNuXZ+T/xiN0sBQyMBmKCAVoQ6HNHcecGgD84gJ4HG95Hx6lRFlqQR1Y31J3mQwJCuIMu8PhbzcESbS1viXQX3hFTHJ/DUmd8H7Z7HWNoG7xf6Cpr7jDA0+NcH3EIMlMJEMzfrxzjPmLibRLhe1UjQ11/b4Bn/aPbSByWSpGRrHwvpPRVD/ULCHoqxQX9Ha1xdOniBHSZw/kLMOQyJ+uhTgdfGRXk8DlQ0quPhH1VHoMOD5l5ciViIQmeQYcDvog/axTRUQxbw/jLa4T0JAcBk6szHL8+FrifJYTtptqKBnskmmc5zrkVbQXBgeLaGGd275iKi+SmeOpAeg7Duvkfh4ORYVOo+k1KApcfcrUyjY41sDgYLNjsxwmBg0nzaEbzBHIaAvS13NmMMa5XYGDpeld13Zh4X+Ehk3DDj25KqjvUuWFLBdmOip7PDTiMhNpY6pYbqAe8NP9526BszJu24btdYY8VrbUGMcsTXr38gqdcYpafSO1YGKKQQHMn0iw8y5rELS0uAvaZGtIAmhw7MnSxr+ZM0Tn"
+                    },
+                    "maintenancePolicy": {
+                        "day": "any",
+                        "duration": "4h0m0s",
+                        "startTime": "0:00"
+                    },
+                    "name": "easy-k8s-dev-kubernetes-controlplane",
+                    "nodePool": {
+                        "actualNodeCount": 3,
+                        "autoScale": false,
+                        "id": "5599a8ef-a4e2-401c-b218-5a1f5f4b049b",
+                        "labels": {},
+                        "maxNodes": 0,
+                        "minNodes": 0,
+                        "name": "ingress-nodepool",
+                        "nodeCount": 3,
+                        "nodes": [
+                            {
+                                "createdAt": "2024-03-12 18:14:47 +0000 UTC",
+                                "dropletId": "406532951",
+                                "id": "5ee082ac-65c4-493a-bb53-e6850e1845c2",
+                                "name": "ingress-nodepool-oi1ii",
+                                "status": "running",
+                                "updatedAt": "2024-03-12 18:17:08 +0000 UTC"
+                            },
+                            {
+                                "createdAt": "2024-03-12 18:14:47 +0000 UTC",
+                                "dropletId": "406532950",
+                                "id": "cfacdc48-8479-49a1-abd0-b0991ec62fd3",
+                                "name": "ingress-nodepool-oi1iv",
+                                "status": "running",
+                                "updatedAt": "2024-03-12 18:17:08 +0000 UTC"
+                            },
+                            {
+                                "createdAt": "2024-03-12 18:14:47 +0000 UTC",
+                                "dropletId": "406532952",
+                                "id": "9285b507-4120-4c9d-a162-a399851fb38d",
+                                "name": "ingress-nodepool-oi1id",
+                                "status": "running",
+                                "updatedAt": "2024-03-12 18:17:08 +0000 UTC"
+                            }
+                        ],
+                        "size": "s-2vcpu-2gb",
+                        "tags": [],
+                        "taints": []
+                    },
+                    "region": "fra1",
+                    "registryIntegration": false,
+                    "serviceSubnet": "10.245.0.0/16",
+                    "status": "running",
+                    "surgeUpgrade": true,
+                    "tags": [],
+                    "updatedAt": "2024-03-12 18:19:12 +0000 UTC",
+                    "version": "1.29.1-do.0",
+                    "vpcUuid": "42fa9eda-a8ba-429f-a2a6-17fb7090a866"
+                },
+                "parent": "urn:pulumi:dev::easy-k8s::easy-k8s:controlplane::easy-k8s-dev-component-resource-controlplane",
+                "provider": "urn:pulumi:dev::easy-k8s::pulumi:providers:digitalocean::default_4_25_2::b3617091-2d75-4cb3-adb1-7fd1dff3bad8",
+                "propertyDependencies": {
+                    "name": null,
+                    "nodePool": null,
+                    "region": null,
+                    "version": null
+                },
+                "additionalSecretOutputs": [
+                    "kubeConfigs"
+                ],
+                "created": "2024-03-12T18:19:18.387981Z",
+                "modified": "2024-03-12T18:19:18.387981Z",
+                "sourcePosition": "project:///src/resources/kubernetes-controlplane.ts#32,16"
+            }
+        ]
+    }
+}
