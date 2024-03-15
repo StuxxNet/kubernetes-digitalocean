@@ -1,7 +1,7 @@
 config:
   easy-k8s:vpcIpRange: "10.0.0.0/16"
   easy-k8s:region: fra1
-  easy-k8s:version: 1.29
+  easy-k8s:version: 1.29.1-do.0
   easy-k8s:default-nodepool-size: s-2vcpu-2gb
   easy-k8s:default-nodepool-count: 2
   easy-k8s:ingress-nodepool-size: c-2

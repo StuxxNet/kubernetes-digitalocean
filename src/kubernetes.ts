@@ -46,7 +46,7 @@ export class Kubernetes extends pulumi.ComponentResource {
         },
       ],
       labels: {
-        "kubernetes.io/app": "ingress"
+        "app": "ingress"
       }
     });
   }
