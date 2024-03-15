@@ -8,6 +8,7 @@ export interface NodePoolParamaters {
   size: string;
   nodeCount: number;
   taints?: TaintsParameters[];
+  labels?: {[key: string]: string};
   tags: string[];
 }
 
@@ -40,6 +41,7 @@ export class KubernetesNodePool extends pulumi.ComponentResource {
         nodeCount: nodePoolParameters.nodeCount,
         tags: nodePoolParameters.tags,
         taints: nodePoolParameters.taints,
+        labels: nodePoolParameters.labels,
       },
       {
         parent: this,

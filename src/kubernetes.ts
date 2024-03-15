@@ -40,11 +40,14 @@ export class Kubernetes extends pulumi.ComponentResource {
       tags: utils.getDefaultTags(),
       taints: [
         {
-          key: 'kubernetes.io/service',
-          value: 'ingress-nginx',
+          key: 'kubernetes.io/reserved-node',
+          value: 'true',
           effect: 'NoSchedule',
         },
       ],
+      labels: {
+        "kubernetes.io/app": "ingress"
+      }
     });
   }
 }
