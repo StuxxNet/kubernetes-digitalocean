@@ -1,0 +1,11 @@
+config:
+  easy-k8s:vpcIpRange: "10.0.0.0/16"
+  easy-k8s:region: fra1
+  easy-k8s:version: 1.29.1-do.0
+  easy-k8s:high-available-control-plane: true
+  easy-k8s:default-nodepool-size: c-4
+  easy-k8s:default-nodepool-count: 4
+  easy-k8s:ingress-nodepool-size: s-2vcpu-2gb
+  easy-k8s:ingress-nodepool-min-count: 2
+  easy-k8s:ingress-nodepool-max-count: 4
+  easy-k8s:go-daddy-domain-filter: ramonborges.site
